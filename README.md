@@ -1,3 +1,3 @@
-(https://github.com/belaszabo/hello-world)
-(https://github.com/belaszabo/patchwork)
-(https://github.com/belaszabo/git-lesson-repository)
+https://github.com/belaszabo/hello-world<br>
+https://github.com/belaszabo/patchwork<br>
+https://github.com/belaszabo/git-lesson-repository
