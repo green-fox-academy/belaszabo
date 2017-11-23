@@ -1,0 +1,27 @@
+body {
+  height: 226px;
+  width: 706px;
+}
+
+span {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(66, 133, 244);
+  display: inline-block;
+  margin-right: 16px;
+}
+
+div {
+  border: 2px solid rgb(66, 133, 244);
+  padding: 24px 16px 24px 24px;
+  width: 700px;
+  margin-bottom: 12px;
+}
+
+div:nth-of-type(2) {
+  background-color: rgb(255, 99, 71);
+}
+
+div:nth-of-type(2) > span {
+  background-color: rgb(100, 53, 121);
+}
