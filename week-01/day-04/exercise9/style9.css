@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+}
+
+body {
+  width: 446px;
+  height: 840px;
+  margin-left: 44px;
+}
+
+p {
+  border: 2px solid black;
+  border-top: 0;
+  padding: 24px 20px 21px;
+}
+
+h1 {
+  margin-top: 28px;
+  margin-bottom: 30px;
+}
+
+p:last-of-type {
+  border-bottom: 0;
+}
+
+p:hover {
+  background-color: rgb(236, 104, 66)
+}
