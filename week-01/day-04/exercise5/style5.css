@@ -1,0 +1,38 @@
+/** {
+  margin: 0;
+  padding: 0;
+}*/
+
+body {
+  font-family: "Times New Roman";
+  height: 380px;
+  width: 340px;
+}
+
+h1 {
+  color: rgb(255, 99, 71);
+  margin-top: 3px;
+  margin-bottom: 12px;
+}
+
+h2 {
+  color: rgb(138, 43, 226);
+  margin-top: 12px;
+}
+
+ul {
+  list-style-type: square;
+}
+
+ol {
+  list-style-type: upper-roman;
+}
+
+ol > li {
+  color: rgb(255, 0, 255);
+  text-decoration: underline;
+}
+
+ol > li:last-of-type {
+  color: black;
+}
