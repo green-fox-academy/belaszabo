@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 586px;
+  width: 383px;
+}
+
+div {
+  font-family: sans-serif;
+  font-size: 36px;
+  margin: 2px 1px 3px 3px;
+  color: white;
+  background-color:  rgb(169, 230, 230);
+  border: 16px solid rgb(66, 133, 244);
+  height: 256px;
+  text-align: center;
+}
+
+div:first-child {
+  background-color:rgb(230, 118, 118);
+  margin-bottom: 5px;
+}
+
+p{
+  padding-top: 80px;
+}
+
+p:first-child {
+  padding-top: 43px;
+}
