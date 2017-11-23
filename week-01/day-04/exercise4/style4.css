@@ -1,0 +1,18 @@
+/*body {
+  width: 322px;
+  height: 108px;
+}*/
+
+h1 {
+  color: rgb(232, 165, 32);
+  margin-top: 5px;
+}
+
+p {
+  font-family: monospace;
+  margin: 0;
+}
+
+p:nth-child(3) {
+  padding-left: 16px;
+}
