@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 549px;
+  width: 385px;
+}
+
+p {
+  font-family: Arial;
+  font-size: 36px;
+  color: white;
+  height: 82px;
+  text-align: center;
+  padding-top: 46px;
+}
+
+p:nth-child(1) {
+  background-color: rgb(230, 118, 118);
+}
+
+p:nth-child(2) {
+  background-color: rgb(242, 240, 98);
+}
+
+p:nth-child(3) {
+  background-color: rgb(169, 230, 230);
+}
+
+p:nth-child(4) {
+  background-color: rgb(118, 146, 228);
+}
+
+div {
+  border: 16px solid rgb(66, 133, 244);
+  margin: 2px 3px 3px 2px;
+}
