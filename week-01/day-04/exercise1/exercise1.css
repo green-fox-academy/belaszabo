@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 471px;
+  width: 367px;
+}
+
+p {
+  font-family: Arial;
+  background-color: #0e91a1;
+  border: 5px solid rgb(125,206,148);
+  font-size: 36px;
+  height: 133px;
+  color: rgb(0, 85, 102);
+  margin: 4px 5px 16px 4px;
+  padding-left: 16px;
+  padding-top: 22px;
+}
