@@ -1,0 +1,36 @@
+body {
+  height: 553px;
+  width: 272px;
+  font-family: courier;
+  font-size: 16px;
+}
+
+p {
+  margin: 4px 5px 8px 3px;
+  background-color: rgb(100, 53, 121);
+  color: white;
+  text-align: center;
+  background-image: url('duck.png');
+  background-position: center;
+  background-size: 55%;
+  background-repeat: no-repeat;
+  height: 90px;
+  padding: 20px 35px 30px 25px;
+}
+
+p:first-of-type {
+  background-color: rgb(255, 99, 71);
+  height: 80px;
+  padding: 20px 53px;
+  background-position: left;
+  background-size: 27%;
+}
+
+p:last-of-type {
+  background-color: rgb(128, 128, 128);
+  background-position: bottom right;
+  background-size: 27%;
+  height: 130px;
+  padding-top: 10px;
+  padding-bottom: 8px;
+}
