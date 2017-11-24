@@ -12,8 +12,8 @@
       <h2>Personal data</h2>
       <label for="name">Name</label>
       <input type="text" name="user-name" id="name" required>
-      <label for="bdate">Date of birth</label>
-      <input type="date" name="birth-date" id="bdate">
+      <label for="byear">Year of birth</label>
+      <input type="number" name="birth-year" id="byear" placeholder="ie. 1976">
       <p>Sex</p>
       <input type="radio" name="sex" id="male">
       <label for="male">Male</label>
@@ -43,9 +43,32 @@
     </div>
     <div>
       <h2>Kapcsolat</h2>
+      <label for="phone">Phone number</label>
+      <input type="tel" name="telephone" id="phone" required placeholder="+36 -- --- ----">
+      <label for="mail">Email address</label>
+      <input type="email" name="email" id="mail" required placeholder="name@domain.com">
+      <label for="fb">Your Facebook profile</label>
+      <input type="url" name="user-facebook" id="fb" placeholder="http://facebook.com/...">
+      <label for="twitter">Your Twitter profile</label>
+      <input type="url" name="user-twitter" id="twitter" placeholder="http://twitter.com/...">
+      <label for="house">Living conditions</label>
+      <select id="house" name="user-house">
+        <option value="" disabled hidden selected>Choose an option!</option>
+        <option>House</option>
+        <option>Flat</option>
+        <option>Other</option>
+        <!-- add sentence: you can choose multiple... -->
+      </select>
     </div>
     <div>
-
+      <label for="intro">Introduction</label>
+      <textarea id="intro" name="introduction" rows="10" cols="40" required placeholder="Write a few sentences about yourself!"></textarea>
+      <label for="cv">Upload your CV</label>
+      <input type="file" name="user-cv" id="cv">
+      <input type="checkbox" name="agreeterms" id="terms" required>
+      <label for="terms">I agree to the <a href="#">terms and conditions</a></label>
+      <input type="submit" name="user-submit" id="submit">
+      <input type="reset" name="user-reset" id="reset">
     </div>
   </form>
 </body>

@@ -18,12 +18,13 @@ form {
 }
 
 h1 {
-  background-color: yellow;
+  background-color: #dcd6cd;
   align-content: center;
   /*padding: 13px;*/
   border: 13px solid red;
   margin: 16px 0;
   font-weight: 400;
+  color: #4a4261;
 }
 
 div:first-of-type {
@@ -32,13 +33,14 @@ div:first-of-type {
 
 div {
   display: inline-block;
-  background-color: yellow;
+  background-color: #dcd6cd;
   width: 49%;
   /*padding: 13px;*/
   border: 13px solid red;
   height: 410px;
   margin: 16px 0;
   float: right;
+  color: #4a4261;
 }
 
 div:last-of-type {
@@ -50,4 +52,8 @@ h2 {
   color: white;
   font-weight: 400;
   background-color: #938c97;
+}
+
+label {
+  display: 
 }
