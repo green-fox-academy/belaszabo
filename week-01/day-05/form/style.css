@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 820px; 
+  width: 806px;
+  background-color: rgb(220, 214, 205);
+  align-content: center;
+  margin: auto;
+}
+
+form {
+  background-color: green;
+}
+
+h1 {
+  background-color: yellow;
+  align-content: center;
+  /*padding: 13px;*/
+  border: 13px solid red;
+  margin: 16px 0;
+}
+
+p:first-of-type {
+  float: left;
+}
+
+p{
+  display: inline-block;
+  background-color: yellow;
+  width: 49%;
+  /*padding: 13px;*/
+  border: 13px solid red;
+  height: 410px;
+  margin: 16px 0;
+  float: right;
+}
+
+p:last-of-type {
+  width: 100%;
+  float: none;
+}
