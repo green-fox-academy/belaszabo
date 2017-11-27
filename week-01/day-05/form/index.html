@@ -8,17 +8,21 @@
 <body>
   <form action="#" method="post">
     <h1>Profile</h1>
-    <div>
+    <section>
       <h2>Personal data</h2>
       <label for="name">Name</label>
       <input type="text" name="user-name" id="name" required>
-      <label for="byear">Year of birth</label>
-      <input type="number" name="birth-year" id="byear" placeholder="ie. 1976">
-      <p>Sex</p>
-      <input type="radio" name="sex" id="male">
-      <label for="male">Male</label>
-      <input type="radio" name="sex" id="female">
-      <label for="female">Female</label>
+      <div class="namediv">
+        <label for="byear">Year of birth</label>
+        <input type="number" name="birth-year" id="byear" placeholder="ie. 1976">
+      </div>
+      <div class="sexright">
+        <p>Sex</p>
+        <input type="radio" name="sex" id="male">
+        <label for="male">Male</label>
+        <input type="radio" name="sex" id="female">
+        <label for="female">Female</label>
+      </div>
       <p>What kind of brand do you like?</p>
       <input type="checkbox" name="brand" id="adidas">
       <label for="adidas">Adidas</label>
@@ -40,8 +44,8 @@
       <label for="tesla">Tesla</label>
       <input type="checkbox" name="brand" id="yahoo">
       <label for="yahoo">Yahoo</label>
-    </div>
-    <div>
+    </section>
+    <section>
       <h2>Kapcsolat</h2>
       <label for="phone">Phone number</label>
       <input type="tel" name="telephone" id="phone" required placeholder="+36 -- --- ----">
@@ -57,10 +61,11 @@
         <option>House</option>
         <option>Flat</option>
         <option>Other</option>
+        <p>You can shoose multiple options</p>
         <!-- add sentence: you can choose multiple... -->
       </select>
-    </div>
-    <div>
+    </section>
+    <section>
       <label for="intro">Introduction</label>
       <textarea id="intro" name="introduction" rows="10" cols="40" required placeholder="Write a few sentences about yourself!"></textarea>
       <label for="cv">Upload your CV</label>
@@ -69,7 +74,7 @@
       <label for="terms">I agree to the <a href="#">terms and conditions</a></label>
       <input type="submit" name="user-submit" id="submit">
       <input type="reset" name="user-reset" id="reset">
-    </div>
+    </section>
   </form>
 </body>
 </html>

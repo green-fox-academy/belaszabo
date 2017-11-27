@@ -27,11 +27,11 @@ h1 {
   color: #4a4261;
 }
 
-div:first-of-type {
+section:first-of-type {
   float: left;
 }
 
-div {
+section {
   display: inline-block;
   background-color: #dcd6cd;
   width: 49%;
@@ -43,7 +43,7 @@ div {
   color: #4a4261;
 }
 
-div:last-of-type {
+section:last-of-type {
   width: 100%;
   float: none;
 }
@@ -55,5 +55,28 @@ h2 {
 }
 
 label {
-  display: 
+  display: block;
+  margin: 0.3em;
+}
+
+/*label [for="name"]:after {
+  content: "*";
+  color: red;
+  display: inline;
+}*/
+
+.sexdiv {
+  float: right;
+  display: inline-block;
+  width: 50%;
+}
+
+.namediv {
+  float: left;
+  display: inline-block;
+  width: 50%;
+}
+
+option {
+  margin: 0;
 }
