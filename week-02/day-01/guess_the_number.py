@@ -14,7 +14,6 @@ while a != b:
     elif a < b:
         print('The stored number is lower')
         b = int(input('Guess again: '))
-    elif a == b:
-        print('You found the number',a)
     else:
         b = int(input('Guess again: '))
+print('You found the number',a)
