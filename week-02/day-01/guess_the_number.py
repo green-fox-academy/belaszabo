@@ -5,3 +5,16 @@
 # The stored number is higher
 # The stried number is lower
 # You found the number: 8
+a = int(input('Write a number: '))
+b = int(input('Guess: '))
+while a != b:
+    if a > b:    
+        print('The stored number is higher')
+        b = int(input('Guess again: '))
+    if a < b:
+        print('The stored number is lower')
+        b = int(input('Guess again: '))
+    elif a == b:
+        print('You found the number',a)
+    else:
+        b = int(input('Guess again: '))

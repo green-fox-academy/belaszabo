@@ -17,11 +17,11 @@ boys = int(input())
 
 if girls == boys and girls + boys > 20:
     print ('The party is excellent!')
+elif girls == 0:
+    print ('Sausage party')
 elif girls != boys and girls + boys > 20:
     print ('Quite cool party!')
 elif girls + boys < 20:
     print ('Average party...')
-elif girls == 0:
-    print ('Sausage party')
 else:
     print('')
