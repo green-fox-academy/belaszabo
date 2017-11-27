@@ -10,6 +10,9 @@
 # %%%%%
 #
 # The square should have as many lines as the number was
-number = input()
-for a in range(1,number+1):
-  print('*' * a)
+a = int(input())
+b = a - 2
+print ('%' * a)
+for i in range(b):
+    print ('%' +  ' ' * i + '%' + (a - i -2) * ' ' + '%')
+print ('%' * a)
