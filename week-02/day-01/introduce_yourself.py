@@ -8,3 +8,4 @@
 #  John Doe
 #  31
 #  1.87
+print ("Bela Szabo\n26\n1.85")
