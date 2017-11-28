@@ -7,4 +7,3 @@
 #   0 0 0 1
 #
 # - Print this two dimensional list to the output
-l = []
