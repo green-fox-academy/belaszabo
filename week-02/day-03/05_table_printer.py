@@ -23,10 +23,28 @@ ingredients = [
     { "name": "lime juice", "in_stock": 0, "needs_cooling": True },
     { "name": "soda", "in_stock": 0, "needs_cooling": True }
 ]
+def header():
+    return "+--------------------+---------------+----------+\n| Ingredient         | Needs cooling | In stock |\n+--------------------+---------------+----------+"
 
-print('+--------------------+---------------+----------+\n'
-    '| Ingredient         | Needs cooling | In stock |\n'
-    '+--------------------+---------------+----------+')
+def needs_cooling(i):
+    if ingredients[i]["needs_cooling"] == True:
+        return "Yes"
+    else:
+        return "No"
 
-for i in ingredients:
-    
+def in_stock(i):
+    if ingredients[i]["in_stock"] != 0:
+        return str(ingredients[i]["in_stock"])
+    else:
+        return "-"
+
+def footer():
+    return "+--------------------+---------------+----------+"
+
+def table():
+    for i in range(0, len(ingredients)):
+        print("| " + ingredients[i]["name"] + " "*(19-len(ingredients[i]["name"])) + "| " + needs_cooling(i) + " "*(14-len(needs_cooling(i))) + "| " + in_stock(i) + " "*8 + "|")
+
+print(header())
+table()
+print(footer())
