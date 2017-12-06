@@ -5,4 +5,5 @@ reversed_order.txt
 encoded_lines.txt
 10_encoded_lines.py
 decrypted.txt
-12_purple_steps_3d.py
+13_checkerboard.py
+14_function_to_center.py
