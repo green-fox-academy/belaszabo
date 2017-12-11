@@ -20,12 +20,10 @@ print(dominoes)
 def sorter(list):
     new_dominoes = []
     new_dominoes.append(dominoes[0])
-    temp = 0
     while len(new_dominoes) != len(list):
         for i in range(1, len(dominoes)):
-            if dominoes[i].values[0] == new_dominoes[temp].values[1]:
-                new_dominoes.append(dominoes[i])
-                temp += 1    
+            if dominoes[i].values[0] == new_dominoes[-1].values[1]:
+                new_dominoes.append(dominoes[i]) 
     return new_dominoes
 
 print(sorter(dominoes))
