@@ -20,3 +20,4 @@ class Tree(object):
             print("The " + self.color + " Tree needs water")
         else:
             print("The " + self.color + " Tree doesn't need water")
+            
