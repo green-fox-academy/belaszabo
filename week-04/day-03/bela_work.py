@@ -29,3 +29,23 @@ class Apple(object):
         return list_of_string1 == list_of_string2
 
 
+    def count_letters(self, string):
+        dict_of_string = {}
+
+        for i in range(len(string)):
+            if string[i] in dict_of_string:
+                dict_of_string[string[i]] += 1
+            else:
+                dict_of_string[string[i]] = 1 
+
+        return dict_of_string
+
+
+    def fibonacci(self, n):
+        if type(n) != int or n < 0:
+            return "Please enter a non-negative integer"
+        if n < 2:
+            return n
+        else:
+            return (self.fibonacci(n-1) + self.fibonacci(n-2))
+        

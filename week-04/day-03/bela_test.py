@@ -47,5 +47,44 @@ class TestBelaWork(unittest.TestCase):
         apple = Apple()
         self.assertEqual(apple.anagram("abcde", "badec"), True)
 
+
+    def test_count_letters_empty_string(self):
+        apple = Apple()
+        test_dict = {}
+        self.assertEqual(apple.count_letters(""), test_dict)
+
+
+    def test_count_letters_one_char_string(self):
+        apple = Apple()
+        test_dict = {"a":1}
+        self.assertEqual(apple.count_letters("a"), test_dict)
+
+
+    def test_count_letters_multiple_char_string(self):
+        apple = Apple()
+        test_dict = {"a": 1, "b": 1, "c": 1, "d": 1}
+        self.assertEqual(apple.count_letters("abcd"), test_dict)
+
+
+    def test_count_letters_multiple_char_string_returning_char(self):
+        apple = Apple()
+        test_dict = {"a": 2, "b": 3, "c": 1, "d": 4}
+        self.assertEqual(apple.count_letters("bcdbddbada"), test_dict)
+        
+
+    def test_fibonacci_number_input(self):
+        apple = Apple()
+        self.assertEqual(apple.fibonacci(1), 1)
+
+
+    def test_fibonacci_negative_number_input(self):
+        apple = Apple()
+        self.assertEqual(apple.fibonacci(-1), "Please enter a non-negative integer")
+    
+
+    def test_fibonacci_string_input(self):
+        apple = Apple()
+        self.assertEqual(apple.fibonacci("do oo o"), "Please enter a non-negative integer")
+
 if __name__ == '__main__':
     unittest.main()
