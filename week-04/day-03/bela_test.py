@@ -3,6 +3,7 @@ from bela_work import Apple
 
 class TestBelaWork(unittest.TestCase):
 
+
     def test_get_apple(self):
         apple = Apple()
         self.assertEqual(apple.get_apple(), "apple")
@@ -30,6 +31,21 @@ class TestBelaWork(unittest.TestCase):
         apple = Apple()
         test_list = ["null"]
         self.assertEqual(apple.summa(test_list), "Enter a list of numbers")
+
+
+    def test_anagram_empty_strings(self):
+        apple = Apple()
+        self.assertEqual(apple.anagram("", ""), True)
+    
+
+    def test_anagram_one_letter_strings(self):
+        apple = Apple()
+        self.assertFalse(apple.anagram("a", "b"))
+
+    
+    def test_anagram_multiple_letter_strings(self):
+        apple = Apple()
+        self.assertEqual(apple.anagram("abcde", "badec"), True)
 
 if __name__ == '__main__':
     unittest.main()

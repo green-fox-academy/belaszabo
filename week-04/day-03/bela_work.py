@@ -15,3 +15,17 @@ class Apple(object):
         else:
             total = 0
         return total
+
+
+    def anagram(self, string1, string2):
+        list_of_string1 = []
+        list_of_string2 = []
+        for letter in string1:
+            list_of_string1.append(letter)
+        for letter in string2:
+            list_of_string2.append(letter)
+        list_of_string1.sort()
+        list_of_string2.sort()
+        return list_of_string1 == list_of_string2
+
+
