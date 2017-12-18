@@ -25,7 +25,10 @@ class MainScreen(object):
             for j in range(len(self.map_tiles[i])):
                 x = i * 72
                 y = j * 72
-                canvas.create_image(x, y, anchor = NW, image = floor)
+                if self.map_tiles[j][i] == 0:
+                    canvas.create_image(x, y, anchor = NW, image = floor)
+                else:
+                    canvas.create_image(x, y, anchor = NW, image = wall)
         root.mainloop()
 
 screen = MainScreen()
