@@ -35,30 +35,35 @@ class Character(object):
         self.pos_x = 0
         self.pos_y = 0
 
+
 class Hero(Character):
-    def __init__(self):
-        self.pos_x = 0
-        self.pos_y = 0
-        self.hero_image = PhotoImage(file = "hero-down.png") 
-        canvas.create_image(self.pos_x, self.pos_y, anchor = NW, image = self.hero_image)
+    # def __init__(self):
+    #     self.pos_x = 0
+    #     self.pos_y = 0
+    #     self.hero_image = PhotoImage(file = "hero-down.png") 
+    #     canvas.create_image(self.pos_x, self.pos_y, anchor = NW, image = self.hero_image)
 
     def move(self, e):
         if e.keysym == "Right":
-            self.pos_x += 72
-            self.hero_image = PhotoImage(file = "hero-right.png") 
-            canvas.create_image(self.pos_x, self.pos_y, anchor = NW, image = self.hero_image)
+            if self.pos_x <= 576:
+                self.pos_x += 72
+                self.hero_image = PhotoImage(file = "hero-right.png") 
+                canvas.create_image(self.pos_x, self.pos_y, anchor = NW, image = self.hero_image)
         elif e.keysym == "Left":
-            self.pos_x -= 72
-            self.hero_image = PhotoImage(file = "hero-left.png") 
-            canvas.create_image(self.pos_x, self.pos_y, anchor = NW, image = self.hero_image)
+            if self.pos_x >= 72:
+                self.pos_x -= 72
+                self.hero_image = PhotoImage(file = "hero-left.png") 
+                canvas.create_image(self.pos_x, self.pos_y, anchor = NW, image = self.hero_image)
         elif e.keysym == "Down":
-            self.pos_y += 72
-            self.hero_image = PhotoImage(file = "hero-up.png") 
-            canvas.create_image(self.pos_x, self.pos_y, anchor = NW, image = self.hero_image)
+            if self.pos_y <= 576:
+                self.pos_y += 72
+                self.hero_image = PhotoImage(file = "hero-down.png") 
+                canvas.create_image(self.pos_x, self.pos_y, anchor = NW, image = self.hero_image)
         elif e.keysym == "Up":
-            self.pos_y -= 72
-            self.hero_image = PhotoImage(file = "hero-down.png") 
-            canvas.create_image(self.pos_x, self.pos_y, anchor = NW, image = self.hero_image)
+            if self.pos_y >= 72:
+                self.pos_y -= 72
+                self.hero_image = PhotoImage(file = "hero-up.png") 
+                canvas.create_image(self.pos_x, self.pos_y, anchor = NW, image = self.hero_image)
 
 hero = Hero()
 canvas.bind("<KeyPress>", hero.move)
