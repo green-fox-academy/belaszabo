@@ -41,6 +41,9 @@ class Character(object):
         self.dp = 0
         self.sp = 0
 
+    def strike(self, e):
+        pass
+
 class Hero(Character):
     def __init__(self):
         super().__init__()
