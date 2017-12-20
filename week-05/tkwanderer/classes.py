@@ -2,7 +2,7 @@ from tkinter import *
 from random import randint
 
 root = Tk()
-canvas = Canvas(root, width = 720, height = 740)
+canvas = Canvas(root, width = 800, height = 720)
 canvas.pack()
 
 class MainScreen(object):
@@ -46,9 +46,9 @@ class Hero(Character):
         super().__init__()
         self.hero_image = PhotoImage(file = "hero-down.png") 
         canvas.create_image(self.pos_x, self.pos_y, anchor = NW, image = self.hero_image)
-        random_number = randint(1, 6)
-        self.hp = 20 + 3 * random_number
-        self.
+        self.hp = 20 + 3 * randint(1, 6)
+        self.dp = 2 * randint(1, 6)
+        self.sp = 5 + randint(1, 6)
 
     def move(self, e):
         if e.keysym == "Right":
@@ -84,10 +84,19 @@ class Hero(Character):
                 self.hero_image = PhotoImage(file = "hero-up.png") 
                 canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
 
+    def level_up(self):
+        self.hp += randint(1, 6)
+        self.dp += randint(1, 6)
+        self.sp += randint(1, 6)
+
+
 class Enemy(Character):
     def __init__(self):
         super().__init__()
-        self.skeleton_image = PhotoImage(file = "skeleton.png") 
+        self.skeleton_image = PhotoImage(file = "skeleton.png")
+        self.hp = 2 * self.level * randint(1, 6)
+        self.dp = self.level / 2 * randint(1, 6)
+        self.sp = self.level * randint(1, 6)
 
     def draw_skeleton(self):
         self.random_x = randint(1, 9)
@@ -103,6 +112,9 @@ class EnemyBoss(Enemy):
     def __init__(self):
         super().__init__()
         self.boss_image = PhotoImage(file = "boss.png")
+        self.hp = 2 * self.level * randint(1, 6) + randint(1, 6)
+        self.dp = self.level / 2 * randint(1, 6) + (randint(1, 6) / 2)
+        self.sp = self.level * randint(1, 6) + self.level
     
     def draw_boss(self):
         self.random_x = randint(7, 9)
@@ -116,7 +128,14 @@ class EnemyBoss(Enemy):
 
 class StatBox(object):
     def __init__(self):
-        canvas.create_text
+        canvas.create_text(750, 20, text = "Hero lvl:")
+        canvas.create_text(790, 20, text = hero.level)
+        canvas.create_text(750, 40, text = "Hero HP:")
+        canvas.create_text(790, 40, text = hero.hp)
+        canvas.create_text(750, 60, text = "Hero DP:")
+        canvas.create_text(790, 60, text = hero.dp)
+        canvas.create_text(750, 80, text = "Hero SP:")
+        canvas.create_text(790, 80, text = hero.sp)
 
 hero = Hero()
 canvas.bind("<KeyPress>", hero.move)
@@ -133,5 +152,7 @@ for i in range(3):
 
 boss = EnemyBoss()
 boss.draw_boss()
+
+stat_box = StatBox()
 
 root.mainloop()
