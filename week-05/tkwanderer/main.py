@@ -1,5 +1,5 @@
 from tkinter import *
-from classes import MainScreen, Character, Hero
+from classes import *
 
 root = Tk()
 canvas = Canvas(root, width = 720, height = 720)
