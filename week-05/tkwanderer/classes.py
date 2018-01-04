@@ -34,8 +34,6 @@ class MainScreen(object):
 
 class Character(object):
     def __init__(self):
-        self.pos_x = 0
-        self.pos_y = 0
         self.size = 72
         self.level = 1
         self.max_hp = 0
@@ -46,6 +44,8 @@ class Character(object):
 class Hero(Character):
     def __init__(self):
         super().__init__()
+        self.pos_x = 0
+        self.pos_y = 0
         self.hero_image = PhotoImage(file = "hero-down.png") 
         canvas.create_image(self.pos_x, self.pos_y, anchor = NW, image = self.hero_image)
         self.max_hp = 20 + 3 * randint(1, 6)
@@ -54,38 +54,39 @@ class Hero(Character):
         self.sp = 5 + randint(1, 6)
 
     def move(self, e):
-        if e.keysym == "Right":
-            if self.pos_x <= 9 and screen.map_tiles[self.pos_y][self.pos_x + 1] == 0:
-                self.pos_x += 1
+        try:
+            if e.keysym == "Right":
                 self.hero_image = PhotoImage(file = "hero-right.png") 
-                canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
-            else:
-                self.hero_image = PhotoImage(file = "hero-right.png") 
-                canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
-        elif e.keysym == "Left":
-            if self.pos_x >= 1 and screen.map_tiles[self.pos_y][self.pos_x - 1] == 0:
+                if self.pos_x <= 9 and screen.map_tiles[self.pos_y][self.pos_x + 1] == 0:
+                    self.pos_x += 1
+                    canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
+                else:
+                    canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
+            elif e.keysym == "Left":
                 self.hero_image = PhotoImage(file = "hero-left.png")
-                self.pos_x -= 1
-                canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
-            else:
-                self.hero_image = PhotoImage(file = "hero-left.png")
-                canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
-        elif e.keysym == "Down":
-            if self.pos_y <= 9 and screen.map_tiles[self.pos_y + 1][self.pos_x] == 0:
-                self.pos_y += 1
+                if self.pos_x >= 1 and screen.map_tiles[self.pos_y][self.pos_x - 1] == 0:
+                    self.pos_x -= 1
+                    canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
+                else:
+                    canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
+            elif e.keysym == "Down":
                 self.hero_image = PhotoImage(file = "hero-down.png") 
-                canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
-            else:
-                self.hero_image = PhotoImage(file = "hero-down.png") 
-                canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
-        elif e.keysym == "Up":
-            if self.pos_y >= 1 and screen.map_tiles[self.pos_y - 1][self.pos_x] == 0:
-                self.pos_y -= 1
+                if self.pos_y <= 9 and screen.map_tiles[self.pos_y + 1][self.pos_x] == 0:
+                    self.pos_y += 1
+                    canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
+                else:
+                    canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
+            elif e.keysym == "Up":
                 self.hero_image = PhotoImage(file = "hero-up.png") 
-                canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
-            else:
-                self.hero_image = PhotoImage(file = "hero-up.png") 
-                canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
+                if self.pos_y >= 1 and screen.map_tiles[self.pos_y - 1][self.pos_x] == 0:
+                    self.pos_y -= 1
+                    canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
+                else:
+                    canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.hero_image)
+            fight.is_hero_on_boss_tile()
+            fight.is_hero_on_skeleton_tile()
+        except IndexError:
+            pass
 
     def level_up(self):
         self.hp += randint(1, 6)
@@ -95,7 +96,7 @@ class Hero(Character):
 class Enemy(Character):
     def __init__(self):
         super().__init__()
-        self.skeleton_image = PhotoImage(file = "skeleton.png")
+        self.image = PhotoImage(file = "skeleton.png")
         self.max_hp = 2 * self.level * randint(1, 6)
         self.current_hp = self.max_hp
         self.dp = self.level / 2 * randint(1, 6)
@@ -107,17 +108,33 @@ class Enemy(Character):
         self.pos_x = self.random_x
         self.pos_y = self.random_y
         if screen.map_tiles[self.pos_y][self.pos_x] != 1:
-            canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.skeleton_image)
+            canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.image)
         else:
             self.draw_skeleton()
 
     def move(self):
-        pass
+        self.direction = randint(1, 4)
+        if self.direction == 1:
+            if self.pos_x <= 8 and screen.map_tiles[self.pos_y][self.pos_x + 1] == 0:
+                self.pos_x += 1
+                canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.image)
+        elif self.direction == 2:
+            if self.pos_x >= 1 and screen.map_tiles[self.pos_y][self.pos_x - 1] == 0:
+                self.pos_x -= 1
+                canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.image)
+        elif self.direction == 3:
+            if self.pos_y <= 8 and screen.map_tiles[self.pos_y + 1][self.pos_x] == 0:
+                self.pos_y += 1
+                canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.image)
+        elif self.direction == 4:
+            if self.pos_y >= 1 and screen.map_tiles[self.pos_y - 1][self.pos_x] == 0:
+                self.pos_y -= 1
+                canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.image)
 
 class EnemyBoss(Enemy):
     def __init__(self):
         super().__init__()
-        self.boss_image = PhotoImage(file = "boss.png")
+        self.image = PhotoImage(file = "boss.png")
         self.max_hp = 2 * self.level * randint(1, 6) + randint(1, 6)
         self.current_hp = self.max_hp
         self.dp = self.level / 2 * randint(1, 6) + (randint(1, 6) / 2)
@@ -129,7 +146,7 @@ class EnemyBoss(Enemy):
         self.pos_x = self.random_x
         self.pos_y = self.random_y
         if screen.map_tiles[self.pos_y][self.pos_x] != 1:
-            canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.boss_image)
+            canvas.create_image(self.pos_x * self.size, self.pos_y * self.size, anchor = NW, image = self.image)
         else:
             self.draw_boss()
 
@@ -145,19 +162,26 @@ class StatBox(object):
         canvas.create_text(770, 140, text = "Enemy's HP: ")
 
 class Fight(object):
-    def __init__(self):
-        pass
-
-    def is_hero_on_enemy_tile(self):
-        print(hero.pos_y)
-        print(boss.pos_y)
-        if hero.pos_x == boss.pos_x and hero.pos_y == boss.pos_y:
+    def is_hero_on_boss_tile(self):
+        while hero.pos_x == boss.pos_x and hero.pos_y == boss.pos_y and hero.current_hp > 0 and boss.current_hp > 0:
             stat_box.fighting()
+            self.enemy_fight()
+
+    def is_hero_on_skeleton_tile(self):
+        while hero.pos_x == skeleton.pos_x and hero.pos_y == skeleton.pos_y and hero.current_hp > 0 and skeleton.current_hp > 0:
+            stat_box.fighting()
+            self.enemy_fight()
+
+    def enemy_fight(self, e):
+        self.sv = hero.sp + randint(1, 6) * 2
+        self.boss_sv = boss.sp + randint(1, 6) * 2
+        if e.keysym == "space":
+            if self.sv > boss.dp:
+                boss.current_hp -= self.sv
+            if self.boss_sv > hero.dp:
+                hero.current_hp -= self.boss_sv
 
 hero = Hero()
-canvas.bind("<KeyPress>", hero.move)
-
-canvas.focus_set()
 
 screen = MainScreen()
 screen.draw_table()
@@ -167,12 +191,20 @@ skeleton = Enemy()
 for i in range(3):
     skeleton.draw_skeleton()
 
+# skeleton.move()
+
 boss = EnemyBoss()
 boss.draw_boss()
+
+boss.move()
 
 stat_box = StatBox()
 
 fight = Fight()
-fight.is_hero_on_enemy_tile()
+
+canvas.bind("<KeyPress>", hero.move, fight.enemy_fight)
+
+canvas.focus_set()
+
 
 root.mainloop()
