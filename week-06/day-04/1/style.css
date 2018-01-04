@@ -1,0 +1,68 @@
+body {
+    background: rgb(54, 129, 206);
+    font-family: 'Times New Roman';
+}
+
+table {
+    border-collapse: collapse;
+}
+
+thead {
+    background: rgb(26, 29, 35);
+    color: rgb(210, 218, 226);
+    font-size: 26px;
+    text-align: left;
+}
+
+tbody {
+    color: rgb(108, 112, 137);
+    font-size: 23px;
+    background: rgb(235, 235, 235);
+}
+
+td, th {
+    width: 370px;
+    height: 80px;
+    padding-left: 5%;
+}
+
+th {
+    font-weight: normal;
+    border-bottom: 4px solid rgb(158, 167, 175);
+}
+
+td {
+    border-bottom: 2px solid rgb(193, 195, 208);
+}
+
+th:first-child {
+    border-top-left-radius: 5px;
+    border-right: 2px solid rgb(193, 195, 208);
+}
+
+th:last-child {
+    border-top-right-radius: 5px;
+}
+
+tr:last-child > td {
+    border-bottom: none;
+}
+
+tr:last-child > td:first-child {
+    border-bottom-left-radius: 5px;
+}
+
+tr:last-child > td:last-child {
+    border-bottom-right-radius: 5px;
+}
+
+tr:nth-child(2n) {
+    background: rgb(246, 246, 246);
+}
+
+tr > td:first-child {
+    border-right: 2px solid rgb(193, 195, 208);
+}
+
+
+
