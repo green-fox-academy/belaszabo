@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 10px;
+  background-color: black;
+}
+
+div {
+  min-height: 80px;
+}
+
+.purple {
+  background-color: purple;
+}
+
+.green {
+  background-color: greenyellow;
+  grid-column: 2 / 4;
+  grid-row: 1 / 3;
+  display: flex;
+}
+
+p{
+  background-color: yellow;
+  width: 80%;
+  margin: 10%;
+}
