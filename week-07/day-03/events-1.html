@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop: EventListeners</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    div {
+      height: 100vh;
+    }
+    .party {
+      background: url(https://media.giphy.com/media/4c4jQPdVv381G/giphy.gif);
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <button>Party</button>
+  </div>
+
+  <!-- You can work in the html or in a separate js file. Like:
+  <script>
+    Turn the party on and off by clicking the button. (the whole page)
+  </script>
+  OR
+  <script src="events-1.js"></script> -->
+  <script>
+    let button = document.querySelector('button');
+    let body = document.querySelector('body');
+    
+    function toggleParty () {
+      body.classList.toggle('party')
+    }
+
+    button.addEventListener('click', toggleParty);
+  </script>
+</body>
+</html>
