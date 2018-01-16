@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Delayed Click</title>
+</head>
+<body>
+  <button>Magic Button</button>
+
+  <script>
+    'use strict';
+    let body = document.querySelector('body');
+    
+    function timer() {
+      setTimeout(function() {
+        let div = document.createElement('div');
+        body.appendChild(div);
+        let content = document.querySelector('div');
+        content.innerText = '2 seconds ellapsed'
+      }, 2000);
+    }
+    
+    let button = document.querySelector('button');
+    button.addEventListener('click', function() {
+      timer();
+    });
+
+  </script>
+</body>
+</html>
