@@ -5,18 +5,18 @@ console.log(main);
 
 function makeHttpRequest(option, url, callback) {
   let httpRequest = new XMLHttpRequest();
-      httpRequest.open(option, url, true);
-      httpRequest.setRequestHeader('Accept', 'application/json');
-      httpRequest.send();
-      httpRequest.onreadystatechange = console.log;
-      httpRequest.onload = function() {
-        if (httpRequest.status >= 200 && httpRequest.status < 400){
-          let data = JSON.parse(httpRequest.responseText).posts;
-          callback(data);
-        } else {
-          console.log('Reached the API, but it returned an error');
-      }
-      };
+  httpRequest.open(option, url, true);
+  httpRequest.setRequestHeader('Accept', 'application/json');
+  httpRequest.send();
+  httpRequest.onreadystatechange = console.log;
+  httpRequest.onload = function() {
+    if (httpRequest.status >= 200 && httpRequest.status < 400){
+      let data = JSON.parse(httpRequest.responseText).posts;
+      callback(data);
+    } else {
+      console.log('Reached the API, but it returned an error');
+  }
+  };
 }
 
 function addArticleToHtml(score, url, title, ellapsedDays, user) {
@@ -43,7 +43,7 @@ function handleJsonData(data) {
 
 function addVoteing() {
   let arrow = document.querySelectorAll('.counter img');
-  
+
 }
 
 function getAllPosts() {
