@@ -27,25 +27,44 @@ span {
   letter-spacing: 1.6em;
 }
 
-img {
-  width: 60px;
-  height:50px;
-  position: absolute;
-  top: 70px;
-  left: 50px;
-  transform: rotate(20deg);
+p {
+  text-align: center;
+}
+
+.counter {
+  height: 100%;
+  float: left;
+  color: rgb(187, 184, 183);
+  font-size: 20px;
+  font-weight: bold;
+  width: 45px;
+  padding-left: 10px;
+}
+
+.counter > img {
+  padding: 5px 15px;
+}
+
+.counter > p {
+  padding-bottom: 5px;
+}
+
+.article-info {
+  padding-left: 70px;
+}
+
+.article-info > p {
+  text-align: left;
 }
 
 main {
   width: 73%;
-  background-color: yellow;
   float: left;
   margin: 1%;
 }
 
 section {
   width: 23%;
-  background-color: green;
   float: right;
   margin: 1% 1% 1% 0;
 }
@@ -66,19 +85,15 @@ section {
   font-weight: bold;
 }
 
-div > p:nth-child(2) {
-  background-color: rgb(245, 245, 245);
-  padding-top: .7em;
-}
-
 ul {
   /* padding-left: 2.9em; */
   padding: 1em 3em;
   background-color: rgb(245, 245, 245);
 }
 
-p {
-  text-align: center;
+.share {
+  background-color: rgb(245, 245, 245);
+  padding-top: .7em;
 }
 
 article > p {
@@ -88,4 +103,5 @@ article > p {
 article {
   border-bottom: 1px solid rgb(204, 204, 204);
   background-color: white;
+  height: 90px;
 }
