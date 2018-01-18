@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reddit - Add post</title>
   <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-  <script src="main.js"></script>
+  <script src="add-post.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet"> 
 </head>
 <body>
   <header>
-    <span id="title">SPACE</span>
+    <span>SPACE</span>
+    <span>ADD POST TO /R/SPACE</span>
   </header>
-  <div>
-
+  <div class="add-post-box">
+    <form>
+      <label for="title">Enter a title for your post</label>
+      <input type="text" id="title" autofocus="true" required="true">
+      <label for="url">URL</label>
+      <input type="url" id="url" required="true">
+    </form>
+    <button>Submit</button>
   </div>
-
 </body>
 </html>
