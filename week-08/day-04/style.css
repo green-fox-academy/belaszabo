@@ -53,6 +53,8 @@ section {
 .about {
   background-color: rgb(251, 251, 251);
   text-align: start;
+  padding: .7em;
+  font-weight: bold;
 }
 
 .submit {
@@ -61,6 +63,12 @@ section {
   text-transform: uppercase;
   letter-spacing: 3px;
   padding: .6em;
+  font-weight: bold;
+}
+
+div > p:nth-child(2) {
+  background-color: rgb(245, 245, 245);
+  padding-top: .7em;
 }
 
 ul {
@@ -75,4 +83,9 @@ p {
 
 article > p {
   text-align: start;
+}
+
+article {
+  border-bottom: 1px solid rgb(204, 204, 204);
+  background-color: white;
 }
