@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>New York Times Exercise</title>
+</head>
+<body>
+  <div>
+  </div>
+  <script>
+    'use strict';
+
+    let articleList = document.querySelector('div');
+    let body = document.querySelector('body');
+
+    let httpRequest = new XMLHttpRequest();
+
+    httpRequest.open('GET', 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=22bb3f9e5fcb4345b3a8ca4832e3784f&q=apollo11', true);
+    httpRequest.send();
+    httpRequest.onreadystatechange = console.log;
+
+    httpRequest.onload = function() {
+      if (httpRequest.status >= 200 && httpRequest.status < 400){
+        let data = JSON.parse(httpRequest.responseText);
+        console.log(data);
+        data.response.docs.forEach(function(art) {
+          let article = document.createElement('ul');
+          articleList.appendChild(article);
+          let headline = document.createElement('li');
+          articleList.appendChild(headline);
+          headline.innerText = art.headline.main;
+          let snippet = document.createElement('li');
+          articleList.appendChild(snippet);
+          snippet.innerText = art.snippet;
+          let publicationDate = document.createElement('li');
+          articleList.appendChild(publicationDate);
+          publicationDate.innerText = art.pub_date.substr(0, 10);
+          let articleLink = document.createElement('li');
+          articleList.appendChild(articleLink);
+          let linkTag = document.createElement('a');
+          articleLink.appendChild(linkTag);
+          linkTag.innerText = 'Link to the article';
+          linkTag.setAttribute('href', art.web_url);
+          });
+      } else {
+        console.log('Reached NYT, but API returned an error');
+     }
+    };
+  </script>
+</body>
+</html>

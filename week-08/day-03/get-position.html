@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Get Position</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="get-position.css" />
+</head>
+<body>
+  <div class='top'>
+    <label for="position">Enter your city and country</label>
+    <input type="text" id="position">
+    <button>Take me there!</button>
+  </div>
+  <iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAcCN0jWGgLTS_Uru8xDLaZ-GxisowNuIQ
+    &q=Italy" allowfullscreen>
+  </iframe>
+
+  <script>
+    'use strict';
+
+    let button = document.getElementsByTagName('button')[0];
+    let map = document.getElementsByTagName('iframe')[0];
+        
+    function getPosition() {
+      let input = document.getElementById('position').value;
+      
+      input = input.split(' ')
+      
+      let inputDestination = input[0] + '+' + input[1];
+      
+      let httpRequest = new XMLHttpRequest();
+      httpRequest.open('GET', 'https://devru-latitude-longitude-find-v1.p.mashape.com/latlon.php?location=' + inputDestination, true);
+      httpRequest.setRequestHeader('X-Mashape-Key', '24TNb1BS2Nmshm9i1iTax61Alrmap1QsGTgjsniLl4qWNaHHCX');
+      httpRequest.setRequestHeader('Accept', 'application/json');
+      httpRequest.send();
+      httpRequest.onreadystatechange = console.log;
+
+      httpRequest.onload = function() {
+        if (httpRequest.status >= 200 && httpRequest.status < 400){
+          let data = JSON.parse(httpRequest.responseText);
+          console.log(data);
+          let dataResults = data.Results[0];
+          console.log(dataResults);
+          let latitude = dataResults.lat;
+          let longitude = dataResults.lon;
+          let posNumbers = document.createElement('div');
+          let top = document.querySelector('.top');
+          top.appendChild(posNumbers);
+          posNumbers.innerText = 'Latitude:' + latitude + ', Longitude:' + longitude;
+          let mapLink = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyAcCN0jWGgLTS_Uru8xDLaZ-GxisowNuIQ&q=' + input;
+          map.setAttribute('src', mapLink);
+        } else {
+          console.log('Reached City Geo, but API returned an error');
+      }
+      };
+    }
+
+    button.addEventListener('click', function() {
+      getPosition();
+    });
+  
+  </script>
+</body>
+</html>
