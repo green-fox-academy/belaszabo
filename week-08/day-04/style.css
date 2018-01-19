@@ -49,6 +49,7 @@ p {
 
 .counter > img {
   padding: 5px 15px;
+  cursor: pointer;
 }
 
 .counter > p {

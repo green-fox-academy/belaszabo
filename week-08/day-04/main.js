@@ -19,16 +19,40 @@ function makeHttpRequest(option, url, callback) {
   };
 }
 
-function addArticleToHtml(score, url, title, ellapsedDays, user) {
+//
+//
+//
+// EZT A FUNCKTIOT MEG RENDBE KENE TENNI MERT NAGYON GANY
+//
+//
+//
+function addArticleToHtml(score, url, title, ellapsedTime, user, id) {
+  
+  function putRequest() {
+    makeHttpRequest('PUT', `http://secure-reddit.herokuapp.com/simple/posts/${id}/upvote`, console.log);
+  }
+   
   let article = document.createElement('article');
+  let counter = document.createElement('div');
+  let upArrow = document.createElement('img');
+  let countNumber = document.createElement('p');
+  let downArrow = document.createElement('img');
+  counter.classList.add('counter');
+  upArrow.setAttribute('src', 'images/upvote.png');
+  downArrow.setAttribute('src', 'images/downvote.png');
+  addUpVote(upArrow, id, score, countNumber);
+  addDownVote(downArrow, id, score, countNumber);
+  countNumber.innerText = score;
   main.appendChild(article);
-  article.innerHTML = `<div class="counter"><img src="images/upvote.png" alt="upvote"><p>${score}</p><img src="images/downvote.png" alt="downvote"></div><div class="article-info"><a href="${url}">${title}</a><p>submitted ${ellapsedDays} day ago by ${user}</p><p><a href="#">Modify</a><a href="#">Remove</a></p></div>`
+  article.appendChild(counter);
+  counter.appendChild(upArrow);
+  counter.appendChild(countNumber);
+  counter.appendChild(downArrow);
+  let articleInfo = document.createElement('div');
+  articleInfo.classList.add('article-info');
+  articleInfo.innerHTML = `<a href="${url}">${title}</a><p>submitted ${ellapsedTime} day ago by ${user}</p><p><a href="#">Modify</a><a href="#">Remove</a></p>`
+  article.appendChild(articleInfo);
 }
-
-// function getEllapsedDays() {
-//   let days = new Date (post.timestamp * 1000);
-//   console.log(days);
-// }
 
 function checkUser(post) {
   let user = post.name;
@@ -37,13 +61,33 @@ function checkUser(post) {
 
 function handleJsonData(data) {
   data.forEach(function(post) {
-    addArticleToHtml(post.score, post.url, post.title, post.timestamp, checkUser(post));
+    addArticleToHtml(post.score, post.url, post.title, post.timestamp, checkUser(post), post.id);
   });
 }
 
-function addVoteing() {
-  let arrow = document.querySelectorAll('.counter img');
+function changeArrowImage(arrow) {
+  let originalSrc = arrow.getAttribute('src');
+  originalSrc = originalSrc.split('.');
+  let usedSrc = originalSrc[0] + 'd.' + originalSrc[1];
+  arrow.setAttribute('src', usedSrc);
+}
 
+function addUpVote(arrow, id, score, countNumber) {
+  arrow.addEventListener('click', function() {
+    makeHttpRequest('PUT', `http://secure-reddit.herokuapp.com/simple/posts/${id}/upvote`, console.log);
+    changeArrowImage(arrow);
+    score++;
+    countNumber.innerText = score;
+  }, {once: true});
+}
+
+function addDownVote(arrow, id, score, countNumber) {
+  arrow.addEventListener('click', function() {
+    makeHttpRequest('PUT', `http://secure-reddit.herokuapp.com/simple/posts/${id}/downvote`, console.log);
+    changeArrowImage(arrow);
+    score--;
+    countNumber.innerText = score;
+  }, {once: true});
 }
 
 function getAllPosts() {
