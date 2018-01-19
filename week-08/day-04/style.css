@@ -127,6 +127,12 @@ article {
   text-decoration: none;
   font-weight: bold;
   padding-bottom: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 500px;
+  display: inline-block;
+  white-space: nowrap;
+  padding-top: 15px;
 }
 
 .article-info > p > a {
