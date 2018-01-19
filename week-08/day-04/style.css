@@ -94,6 +94,11 @@ section {
   letter-spacing: 3px;
   padding: .6em;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: rgb(96, 174, 226)
 }
 
 ul {

@@ -1,14 +1,14 @@
 'use strict';
 
 let main = document.querySelector('main');
-console.log(main);
+let submit = document.querySelector('.submit');
 
 function makeHttpRequest(option, url, callback) {
   let httpRequest = new XMLHttpRequest();
-  httpRequest.open(option, url, true);
+  httpRequest.open(option, url);
   httpRequest.setRequestHeader('Accept', 'application/json');
-  httpRequest.send();
   httpRequest.onreadystatechange = console.log;
+  httpRequest.send();
   httpRequest.onload = function() {
     if (httpRequest.status >= 200 && httpRequest.status < 400){
       let data = JSON.parse(httpRequest.responseText).posts;
@@ -22,40 +22,60 @@ function makeHttpRequest(option, url, callback) {
 //
 //
 //
-// EZT A FUNCKTIOT MEG RENDBE KENE TENNI MERT NAGYON GANY
+// EZT A FUNCTIONT MEG RENDBE KENE TENNI MERT NAGYON GANY
 //
 //
 //
 function addArticleToHtml(score, url, title, ellapsedTime, user, id) {
   
   function putRequest() {
-    makeHttpRequest('PUT', `http://secure-reddit.herokuapp.com/simple/posts/${id}/upvote`, console.log);
+    makeHttpRequest('PUT', `https://time-radish.glitch.me/posts/${id}/upvote`, console.log);
   }
    
   let article = document.createElement('article');
-  let counter = document.createElement('div');
-  let upArrow = document.createElement('img');
-  let countNumber = document.createElement('p');
-  let downArrow = document.createElement('img');
-  counter.classList.add('counter');
-  upArrow.setAttribute('src', 'images/upvote.png');
-  downArrow.setAttribute('src', 'images/downvote.png');
-  addUpVote(upArrow, id, score, countNumber);
-  addDownVote(downArrow, id, score, countNumber);
-  countNumber.innerText = score;
   main.appendChild(article);
+  
+  let counter = document.createElement('div');
+  counter.classList.add('counter');
   article.appendChild(counter);
+  
+  let upArrow = document.createElement('img');
+  upArrow.setAttribute('src', 'images/upvote.png');
   counter.appendChild(upArrow);
+  
+  let countNumber = document.createElement('p');
+  countNumber.innerText = score;
   counter.appendChild(countNumber);
+  
+  let downArrow = document.createElement('img');
+  downArrow.setAttribute('src', 'images/downvote.png');
   counter.appendChild(downArrow);
+  
+  
   let articleInfo = document.createElement('div');
   articleInfo.classList.add('article-info');
-  articleInfo.innerHTML = `<a href="${url}">${title}</a><p>submitted ${ellapsedTime} day ago by ${user}</p><p><a href="#">Modify</a><a href="#">Remove</a></p>`
+  articleInfo.innerHTML = `<a href="${url}">${title}</a><p>submitted ${ellapsedTime} day ago by ${user}</p>`
   article.appendChild(articleInfo);
+  
+  let links = document.createElement('p');
+  articleInfo.appendChild(links);
+  
+  let modify = document.createElement('a');
+  modify.innerText = 'Modify';
+  modify.setAttribute('href', 'edit-post.html');
+  links.appendChild(modify);
+  
+  let remove = document.createElement('a');
+  remove.innerText = 'Remove';
+  links.appendChild(remove);
+  
+  addUpVote(upArrow, id, score, countNumber);
+  addDownVote(downArrow, id, score, countNumber);
+  removePost(remove, id);
 }
 
 function checkUser(post) {
-  let user = post.name;
+  let user = post.owner;
   return (user == null ? user = 'Anonymous' : user);
 }
 
@@ -74,7 +94,7 @@ function changeArrowImage(arrow) {
 
 function addUpVote(arrow, id, score, countNumber) {
   arrow.addEventListener('click', function() {
-    makeHttpRequest('PUT', `http://secure-reddit.herokuapp.com/simple/posts/${id}/upvote`, console.log);
+    makeHttpRequest('PUT', `https://time-radish.glitch.me/posts/${id}/upvote`, console.log);
     changeArrowImage(arrow);
     score++;
     countNumber.innerText = score;
@@ -83,7 +103,7 @@ function addUpVote(arrow, id, score, countNumber) {
 
 function addDownVote(arrow, id, score, countNumber) {
   arrow.addEventListener('click', function() {
-    makeHttpRequest('PUT', `http://secure-reddit.herokuapp.com/simple/posts/${id}/downvote`, console.log);
+    makeHttpRequest('PUT', `https://time-radish.glitch.me/posts/${id}/downvote`, console.log);
     changeArrowImage(arrow);
     score--;
     countNumber.innerText = score;
@@ -91,7 +111,24 @@ function addDownVote(arrow, id, score, countNumber) {
 }
 
 function getAllPosts() {
-  makeHttpRequest('GET', 'http://secure-reddit.herokuapp.com/simple/posts', handleJsonData);
+  makeHttpRequest('GET', 'https://time-radish.glitch.me/posts', handleJsonData);
 }
+
+function goToAddPostPage(button) {
+  button.addEventListener('click', function() {
+    window.location = 'add-post.html';
+  });
+}
+
+function removePost(removeElement, id) {
+  removeElement.addEventListener('click', function() {
+    makeHttpRequest('DELETE', `https://time-radish.glitch.me/posts/${id}`, console.log);
+    console.log('Post deleted succesfully');
+    getAllPosts();
+    window.location.reload();
+  });
+}
+
+goToAddPostPage(submit);
 
 getAllPosts();

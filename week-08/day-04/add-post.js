@@ -4,22 +4,20 @@ let button = document.querySelector('button');
 
 function makeHttpRequest(option, url, data) {
   let httpRequest = new XMLHttpRequest();
-  httpRequest.open(option, url, true);
+  httpRequest.open(option, url);
   httpRequest.setRequestHeader('Accept', 'application/json');
   httpRequest.setRequestHeader('Content-type', 'application/json');
-  httpRequest.setRequestHeader('User', 'MrPeanutbutter');
-  httpRequest.send(data);
+  httpRequest.setRequestHeader('Username', 'MrPeanutbutter');
   httpRequest.onreadystatechange = console.log;
   httpRequest.onload = function() {
     if (httpRequest.status >= 200 && httpRequest.status < 400){
       console.log('Posting succesful!');
-      setTimeout(function() {
-        window.location = 'index.html';
-      }, 2000);
-    } else {
-      console.log('Reached the API, but it returned an error');
-    }
-  };
+      window.location = 'index.html';
+      } else {
+        console.log('Reached the API, but it returned an error');
+      }
+    };
+  httpRequest.send(data);
 }
 
 button.addEventListener('click', function() {
@@ -34,6 +32,6 @@ button.addEventListener('click', function() {
   let jsonDataToSend = JSON.stringify(dataToSend);
   console.log(jsonDataToSend);
 
-  makeHttpRequest('POST', 'http://secure-reddit.herokuapp.com/simple/posts', jsonDataToSend);
+  makeHttpRequest('POST', 'https://time-radish.glitch.me/posts', jsonDataToSend);
 
 });
