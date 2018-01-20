@@ -62,11 +62,12 @@ function addArticleToHtml(score, url, title, ellapsedTime, user, id) {
   
   let modify = document.createElement('a');
   modify.innerText = 'Modify';
-  modify.setAttribute('href', 'edit-post.html');
+  modify.setAttribute('href', `edit-post.html?title=${title}&url=${url}&id=${id}`);
   links.appendChild(modify);
   
   let remove = document.createElement('a');
   remove.innerText = 'Remove';
+  remove.setAttribute('href', '#');
   links.appendChild(remove);
   
   addUpVote(upArrow, id, score, countNumber);

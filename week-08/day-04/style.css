@@ -133,6 +133,7 @@ article {
   display: inline-block;
   white-space: nowrap;
   padding-top: 15px;
+  cursor: pointer;
 }
 
 .article-info > p > a {
