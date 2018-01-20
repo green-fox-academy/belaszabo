@@ -71,7 +71,7 @@ function addArticleToHtml(score, url, title, ellapsedTime, user, id) {
   
   addUpVote(upArrow, id, score, countNumber);
   addDownVote(downArrow, id, score, countNumber);
-  removePost(remove, id);
+  removePost(remove, id, main, article);
 }
 
 function checkUser(post) {
@@ -120,12 +120,11 @@ function goToAddPostPage(button) {
   });
 }
 
-function removePost(removeElement, id) {
+function removePost(removeElement, id, parent, child) {
   removeElement.addEventListener('click', function() {
     makeHttpRequest('DELETE', `https://time-radish.glitch.me/posts/${id}`, console.log);
     console.log('Post deleted succesfully');
-    getAllPosts();
-    window.location.reload();
+    parent.removeChild(child)
   });
 }
 
