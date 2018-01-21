@@ -15,8 +15,15 @@ function makeHttpRequest(option, url, callback) {
       callback(data);
     } else {
       console.log('Reached the API, but it returned an error');
-  }
+    }
   };
+}
+
+function getPostTime(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  let minutes = "0" + date.getMinutes();
+  return `${hours} hours and ${minutes.substr(-2)} minutes`
 }
 
 //
@@ -28,10 +35,8 @@ function makeHttpRequest(option, url, callback) {
 //
 function addArticleToHtml(score, url, title, ellapsedTime, user, id) {
   
-  function putRequest() {
-    makeHttpRequest('PUT', `https://time-radish.glitch.me/posts/${id}/upvote`, console.log);
-  }
-   
+  let postTime = getPostTime(ellapsedTime);
+  
   let article = document.createElement('article');
   main.appendChild(article);
   
@@ -54,7 +59,7 @@ function addArticleToHtml(score, url, title, ellapsedTime, user, id) {
   
   let articleInfo = document.createElement('div');
   articleInfo.classList.add('article-info');
-  articleInfo.innerHTML = `<a href="${url}">${title}</a><p>submitted ${ellapsedTime} day ago by ${user}</p>`
+  articleInfo.innerHTML = `<a href="${url}">${title}</a><p>submitted ${postTime} ago by ${user}</p>`
   article.appendChild(articleInfo);
   
   let links = document.createElement('p');
