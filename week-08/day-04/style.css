@@ -143,6 +143,15 @@ article {
   padding: 5px;
 }
 
+/* .domain {
+  display: inline-block;
+  overflow: hidden;
+  padding-top: 15px;
+  margin: 0;
+  cursor: pointer;
+  padding-bottom: 10px; */
+}
+
 .add-post-box {
 width: 50%;
 margin: 20px auto;

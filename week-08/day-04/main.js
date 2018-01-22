@@ -20,9 +20,10 @@ function makeHttpRequest(option, url, callback) {
 }
 
 function getPostTime(timestamp) {
-  let date = new Date(timestamp);
-  let hours = date.getHours();
-  let minutes = "0" + date.getMinutes();
+  let time = new Date();
+  let date = new Date(timestamp * 1000);
+  let hours = date.getHours() - time.getHours();
+  let minutes = "0" + (date.getMinutes() - time.getMinutes());
   return `${hours} hours and ${minutes.substr(-2)} minutes`
 }
 
@@ -36,6 +37,7 @@ function getPostTime(timestamp) {
 function addArticleToHtml(score, url, title, ellapsedTime, user, id) {
   
   let postTime = getPostTime(ellapsedTime);
+  // let domain = getDomain(url);
   
   let article = document.createElement('article');
   main.appendChild(article);
@@ -59,7 +61,7 @@ function addArticleToHtml(score, url, title, ellapsedTime, user, id) {
   
   let articleInfo = document.createElement('div');
   articleInfo.classList.add('article-info');
-  articleInfo.innerHTML = `<a href="${url}">${title}</a><p>submitted ${postTime} ago by ${user}</p>`
+  articleInfo.innerHTML = `<a href="${url}">${title}</a><p>submitted ${postTime} ago by ${user}</p>` // <span class="domain">(${domain})</span>
   article.appendChild(articleInfo);
   
   let links = document.createElement('p');
@@ -84,6 +86,26 @@ function checkUser(post) {
   let user = post.owner;
   return (user == null ? user = 'Anonymous' : user);
 }
+
+// function getDomain(url) {
+//   if (url == undefined) {
+//     return '#';
+//   } else {
+//     let hostname;
+
+//     if (url.indexOf("://") > -1) {
+//         hostname = url.split('/')[2];
+//     }
+//     else {
+//         hostname = url.split('/')[0];
+//     }
+
+//     hostname = hostname.split(':')[0];
+//     hostname = hostname.split('?')[0];
+
+//     return hostname;
+//   }
+// }
 
 function handleJsonData(data) {
   data.forEach(function(post) {
