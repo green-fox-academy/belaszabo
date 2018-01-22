@@ -8,27 +8,20 @@ let TennisGame1 = function(player1Name, player2Name) {
 };
 
 TennisGame1.prototype.wonPoint = function(playerName) {
-  playerName === "player1" ? this.matchScore1 ++ : this.matchScore2 ++;
+  playerName === "player1" ? this.matchScore1++ : this.matchScore2++;
 };
 
 TennisGame1.prototype.getScore = function() {
   let score = "";
   let tempScore = 0;
   if (this.matchScore1 === this.matchScore2) {
-    switch (this.matchScore1) {
-      case 0:
-        score = "Love-All";
-        break;
-      case 1:
-        score = "Fifteen-All";
-        break;
-      case 2:
-        score = "Thirty-All";
-        break;
-      default:
-        score = "Deuce";
-        break;
-    }
+      let scores = {
+        0: "Love-All",
+        1: "Fifteen-All",
+        2: "Thirty-All",
+        'default': "Deuce"
+      };
+      return score = scores[this.matchScore1] || scores['default'];
   } else if (this.matchScore1 >= 4 || this.matchScore2 >= 4) {
     let minusResult = this.matchScore1 - this.matchScore2;
     if (minusResult === 1) {
@@ -48,20 +41,13 @@ TennisGame1.prototype.getScore = function() {
         score += "-";
         tempScore = this.matchScore2;
       }
-      switch (tempScore) {
-        case 0:
-          score += "Love";
-          break;
-        case 1:
-          score += "Fifteen";
-          break;
-        case 2:
-          score += "Thirty";
-          break;
-        case 3:
-          score += "Forty";
-          break;
-        }
+      let newScore = {
+        0: "Love",
+        1: "Fifteen",
+        2: "Thirty",
+        3: "Forty"
+      }
+      score += newScore[tempScore];
     }
   }
   return score;
