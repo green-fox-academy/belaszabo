@@ -19,9 +19,9 @@ TennisGame1.prototype.getScore = function() {
         0: "Love-All",
         1: "Fifteen-All",
         2: "Thirty-All",
-        'default': "Deuce"
+        "default": "Deuce"
       };
-      return score = scores[this.matchScore1] || scores['default'];
+      return score = scores[this.matchScore1] || scores["default"];
   } else if (this.matchScore1 >= 4 || this.matchScore2 >= 4) {
     let minusResult = this.matchScore1 - this.matchScore2;
     if (minusResult === 1) {
