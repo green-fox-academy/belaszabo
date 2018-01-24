@@ -1,11 +1,11 @@
 'use strict';
 
-function countLetters(string) {
+function countLetters (string) {
   if (typeof string !== 'string') {
     throw new Error('Argument is not a string!');
   }
   let letterCounts = {};
-  let stringArray = string.split('').forEach(function(letter) {
+  string.split('').forEach(function (letter) {
     if (letterCounts[letter] > 0) {
       letterCounts[letter]++;
     } else {
