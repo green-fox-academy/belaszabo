@@ -23,3 +23,28 @@ test('sum an empty list', function(t) {
   t.equal(actual, expected);
   t.end();
 });
+
+test('sum a list with one element', function(t) {
+  let numbers = [1];
+
+  let actual = summer.sum(numbers);
+  let expected = 1;
+
+
+  t.equal(actual, expected);
+  t.end();
+});
+
+test('sum a list of null', function(t) {
+  let numbers = [null];
+
+  t.throws(summer.sum.bind(null, numbers), Error);
+  t.end();
+});
+
+test('test with string', function(t) {
+  let numbers = ['hello'];
+
+  t.throws(summer.sum.bind(null, numbers), Error);
+  t.end();
+});
