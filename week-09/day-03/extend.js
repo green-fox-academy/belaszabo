@@ -25,7 +25,7 @@ const maxOfThree = function(a, b, c) {
 //Returns the median value of a list given as param
 const median = function(pool){
   let filteredPool = pool.filter(item => typeof item === 'number');
-
+  
   if (filteredPool.length === pool.length) {
     return pool.length % 2 === 0 ? pool[(pool.length / 2) - 1] : pool[(pool.length / 2) - 0.5];
   }
