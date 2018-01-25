@@ -12,8 +12,34 @@ app.get('/', function (req, res) {
 });
 
 app.get('/doubling', function (req, res) {
+  if (req.query.input === undefined) {
+    res.body = {
+      "error": "Please provide an input!"
+    }
+  } else {
+    res.body = {
+      "received": req.query.input,
+      "result":  req.query.input * 2
+    }
+  }
+  res.json(res.body);
+});
 
-  res.json();
+app.get('/greeter', function (req, res) {
+  if (req.query.name === undefined) {
+    res.body = {
+      "error": "Please provide a name!"
+    }
+  } else if (req.query.title === undefined) {
+    res.body = {
+      "error": "Please provide a title!"
+    }
+  } else {
+    res.body = {
+      "welcome_message": "Oh, hi there " + req.query.name + ", my dear " + req.query.title + "!"
+    }
+  }
+  res.json(res.body);
 });
 
 app.listen(8080, function() {
