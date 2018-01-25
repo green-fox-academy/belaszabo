@@ -56,14 +56,14 @@ app.get('/appenda/:word', function (req, res) {
 });
 
 app.post('/dountil/:what', function (req, res) {
-  bodyParser();
+  let body;
   if (req.params.what != null) {
     if (req.params.what === 'sum') {
       let sum = 0;
       for (let i = 1; i <= req.body.until; i++ ) {
         sum += i;
       }
-      res.body = {
+      body = {
         "result": sum
       }
     } else if (req.params.what === 'factor') {
@@ -71,16 +71,48 @@ app.post('/dountil/:what', function (req, res) {
       for (let i = 1; i <= req.body.until; i++ ) {
         factor *= i;
       }
-      res.body = {
+      body = {
         "result": factor
     }
     }
   } else {
-    res.body = {
+    body = {
         "error": "Please provide a number!"
     }
   }
-  res.json(res.body);
+  res.json(body);
+});
+
+app.post('/arrays', function (req, res) {
+  let body;
+  console.log(req.body);
+
+  if (req.body.what === 'sum') {
+    let sum = 0;
+      for (let i = 0; i < req.body.numbers.length; i++ ) {
+        sum += req.body.numbers[i];
+      }
+      body = {
+        "result": sum
+      }
+  } else if (req.body.what === 'multiply') {
+    let multi = 1;
+      for (let i = 0; i < req.body.numbers.length; i++ ) {
+        multi *= req.body.numbers[i];
+      }
+      body = {
+        "result": multi
+      }
+  } else if (req.body.what === 'double') {
+    body = {
+      "result": req.body.numbers.map(item => item * 2)
+    }
+  } else {
+    body = {
+      "error": "Please provide what to do with the numbers!"
+    }
+  }
+  res.json(body);
 });
 
 app.listen(8080, function() {
