@@ -42,6 +42,17 @@ app.get('/greeter', function (req, res) {
   res.json(res.body);
 });
 
+app.get('/appenda/:word', function (req, res) {
+  if (req.params.word != 0) {
+    res.body = {
+      "appended": req.params.word + "a"
+    }
+    res.json(res.body);
+  } else {
+    res.send(404);
+  }
+});
+
 app.listen(8080, function() {
   console.log('The server is running');
 });
