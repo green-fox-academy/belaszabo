@@ -139,7 +139,7 @@ function addDownVote(arrow, id, score, countNumber) {
 }
 
 function getAllPosts() {
-  makeHttpRequest('GET', 'https://time-radish.glitch.me/posts', handleJsonData);
+  makeHttpRequest('GET', 'http://localhost:3000/posts', handleJsonData);
 }
 
 function goToAddPostPage(button) {

@@ -25,13 +25,16 @@ button.addEventListener('click', function() {
   let inputUrl = document.querySelector('#url').value;
   
   let dataToSend = new Object();
+  dataToSend.id = null;
   dataToSend.title = String(inputTitle);
   dataToSend.url = String(inputUrl);
+  dataToSend.timestamp = Date.now();
+  dataToSend.score = 0;
   dataToSend.owner = "MrPeanutbutter";
   
   let jsonDataToSend = JSON.stringify(dataToSend);
   console.log(jsonDataToSend);
 
-  makeHttpRequest('POST', 'https://time-radish.glitch.me/posts', jsonDataToSend);
+  makeHttpRequest('POST', 'http://localhost:3000/posts', jsonDataToSend);
 
 });
