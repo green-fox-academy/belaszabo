@@ -48,6 +48,7 @@ button.addEventListener('click', function() {
   let dataToSend = new Object();
   dataToSend.title = String(inputTitle.value);
   dataToSend.url = String(inputUrl.value);
+  dataToSend.timestamp = Date.now();
   dataToSend.owner = "MrPeanutbutter";
   
   let jsonDataToSend = JSON.stringify(dataToSend);

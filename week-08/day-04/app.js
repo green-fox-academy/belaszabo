@@ -67,7 +67,7 @@ app.post('/posts', function (req, res) {
 });
 
 app.put('/posts/:id/upvote', function (req, res) {
-  connection.query(`UPDATE posts SET score = score + 1 WHERE id = ${mysql.escape(req.params.id)}`, req.body, (err, res) => {
+  connection.query(`UPDATE posts SET score = score + 1 WHERE id = ${mysql.escape(req.params.id)}`, (err, res) => {
     if(err) throw err;
 
     console.log(`Upvoted post id: ${req.params.id}`);
@@ -77,13 +77,33 @@ app.put('/posts/:id/upvote', function (req, res) {
 });
 
 app.put('/posts/:id/downvote', function (req, res) {
-  connection.query(`UPDATE posts SET score = score - 1 WHERE id = ${mysql.escape(req.params.id)}`, req.body, (err, res) => {
+  connection.query(`UPDATE posts SET score = score - 1 WHERE id = ${mysql.escape(req.params.id)}`, (err, res) => {
     if(err) throw err;
 
     console.log(`Downvoted post id: ${req.params.id}`);
   });
   res.status(200);
   res.json(req.body);
+});
+
+app.delete('/posts/:id', function (req, res) {
+  connection.query(`DELETE FROM posts WHERE id = ?`, [req.params.id], (err, res) => {
+    if(err) throw err;
+
+    console.log(`Deleted post id: ${req.params.id}`);
+  });
+  res.status(200);
+  res.json(req.body);
+});
+
+app.put('/edit-post.html', function (req, res) {
+  connection.query(`UPDATE posts SET title = ${mysql.escape(req.body.title)} url = ${mysql.escape(req.params.url)} timestamp = ${mysql.escape(req.params.timestamp)} WHERE id = ${mysql.escape(req.params.id)}`, (err, res) => {
+    if(err) throw err;
+
+    console.log(`Downvoted post id: ${req.params.id}`);
+  });
+  res.status(200);
+  res.json(res.body);
 });
 
 app.listen(3000, function() {
