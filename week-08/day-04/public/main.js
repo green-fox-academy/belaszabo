@@ -122,7 +122,7 @@ function changeArrowImage(arrow) {
 
 function addUpVote(arrow, id, score, countNumber) {
   arrow.addEventListener('click', function() {
-    makeHttpRequest('PUT', `https://time-radish.glitch.me/posts/${id}/upvote`, console.log);
+    makeHttpRequest('PUT', `http://localhost:3000/posts/${id}/upvote`, console.log);
     changeArrowImage(arrow);
     score++;
     countNumber.innerText = score;
@@ -131,7 +131,7 @@ function addUpVote(arrow, id, score, countNumber) {
 
 function addDownVote(arrow, id, score, countNumber) {
   arrow.addEventListener('click', function() {
-    makeHttpRequest('PUT', `https://time-radish.glitch.me/posts/${id}/downvote`, console.log);
+    makeHttpRequest('PUT', `http://localhost:3000/posts/${id}/downvote`, console.log);
     changeArrowImage(arrow);
     score--;
     countNumber.innerText = score;
@@ -150,7 +150,7 @@ function goToAddPostPage(button) {
 
 function removePost(removeElement, id, parent, child) {
   removeElement.addEventListener('click', function() {
-    makeHttpRequest('DELETE', `https://time-radish.glitch.me/posts/${id}`, console.log);
+    makeHttpRequest('DELETE', `http://localhost:3000/posts/${id}`, console.log);
     console.log('Post deleted succesfully');
     parent.removeChild(child)
   });
