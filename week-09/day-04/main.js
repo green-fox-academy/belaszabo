@@ -7,6 +7,8 @@ const app = express();
 
 app.use('/assets', express.static('assets'));
 
+app.use(bodyParser.json());
+
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
@@ -43,7 +45,7 @@ app.get('/greeter', function (req, res) {
 });
 
 app.get('/appenda/:word', function (req, res) {
-  if (req.params.word != 0) {
+  if (req.params.word != null) {
     res.body = {
       "appended": req.params.word + "a"
     }
@@ -51,6 +53,34 @@ app.get('/appenda/:word', function (req, res) {
   } else {
     res.send(404);
   }
+});
+
+app.post('/dountil/:what', function (req, res) {
+  bodyParser();
+  if (req.params.what != null) {
+    if (req.params.what === 'sum') {
+      let sum = 0;
+      for (let i = 1; i <= req.body.until; i++ ) {
+        sum += i;
+      }
+      res.body = {
+        "result": sum
+      }
+    } else if (req.params.what === 'factor') {
+      let factor = 1;
+      for (let i = 1; i <= req.body.until; i++ ) {
+        factor *= i;
+      }
+      res.body = {
+        "result": factor
+    }
+    }
+  } else {
+    res.body = {
+        "error": "Please provide a number!"
+    }
+  }
+  res.json(res.body);
 });
 
 app.listen(8080, function() {
