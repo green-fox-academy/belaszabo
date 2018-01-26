@@ -61,10 +61,9 @@ function addArticleToHtml(score, url, title, ellapsedTime, user, id) {
   downArrow.setAttribute('src', 'images/downvote.png');
   counter.appendChild(downArrow);
   
-  
   let articleInfo = document.createElement('div');
   articleInfo.classList.add('article-info');
-  articleInfo.innerHTML = `<a href="${url}">${title}</a><p>submitted ${postTime} ago by ${user}</p>` // <span class="domain">(${domain})</span>
+  articleInfo.innerHTML = `<a target="_blank" href="${url}">${title}</a><p>submitted ${postTime} ago by ${user}</p>` // <span class="domain">(${domain})</span>
   article.appendChild(articleInfo);
   
   let links = document.createElement('p');
