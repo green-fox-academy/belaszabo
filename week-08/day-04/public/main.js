@@ -123,7 +123,7 @@ function changeArrowImage(arrow) {
 
 function addUpVote(arrow, id, score, countNumber) {
   arrow.addEventListener('click', function() {
-    makeHttpRequest('PUT', `http:/localhost:3000/posts/${id}/upvote`, console.log);
+    makeHttpRequest('PUT', `http://localhost:3000/posts/${id}/upvote`, console.log);
     changeArrowImage(arrow);
     score++;
     countNumber.innerText = score;
