@@ -24,7 +24,7 @@ function makeHttpRequest(option, url, data) {
 }
 
 function getOriginalData() {
-  makeHttpRequest('GET', 'https://time-radish.glitch.me/posts')
+  makeHttpRequest('GET', 'http://localhost:3000/posts')
 }
 
 function getParameterByName(name, url) {

@@ -24,7 +24,6 @@ function getPostTime(timestamp) {
   let date = new Date(timestamp);
   let since = time - date;
   since = new Date(since);
-  console.log(since);
   let hour = since.getHours() - 1;
   let minute = since.getMinutes();
   return `${hour} hour(s) and ${minute} minute(s)`
@@ -124,7 +123,7 @@ function changeArrowImage(arrow) {
 
 function addUpVote(arrow, id, score, countNumber) {
   arrow.addEventListener('click', function() {
-    makeHttpRequest('PUT', `http://localhost:3000/posts/${id}/upvote`, console.log);
+    makeHttpRequest('PUT', `http:/localhost:3000/posts/${id}/upvote`, console.log);
     changeArrowImage(arrow);
     score++;
     countNumber.innerText = score;
