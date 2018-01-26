@@ -54,7 +54,7 @@ button.addEventListener('click', function() {
   let jsonDataToSend = JSON.stringify(dataToSend);
   console.log(jsonDataToSend);
 
-  makeHttpRequest('PUT', `https://time-radish.glitch.me/posts/${id}`, jsonDataToSend);
+  makeHttpRequest('PUT', `http://localhost:3000/posts/${id}`, jsonDataToSend);
 
 });
 

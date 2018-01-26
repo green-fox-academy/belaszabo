@@ -96,11 +96,11 @@ app.delete('/posts/:id', function (req, res) {
   res.json(req.body);
 });
 
-app.put('/edit-post.html', function (req, res) {
-  connection.query(`UPDATE posts SET title = ${mysql.escape(req.body.title)} url = ${mysql.escape(req.params.url)} timestamp = ${mysql.escape(req.params.timestamp)} WHERE id = ${mysql.escape(req.params.id)}`, (err, res) => {
+app.put('/posts/:id', function (req, res) {
+  connection.query(`UPDATE posts SET title = ${mysql.escape(req.body.title)}, url = ${mysql.escape(req.body.url)}, timestamp = ${mysql.escape(req.body.timestamp)} WHERE id = ${mysql.escape(req.params.id)};`, (err, res) => {
     if(err) throw err;
 
-    console.log(`Downvoted post id: ${req.params.id}`);
+    console.log(`Edited post id: ${req.params.id}`);
   });
   res.status(200);
   res.json(res.body);
