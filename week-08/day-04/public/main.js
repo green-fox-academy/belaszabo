@@ -20,11 +20,14 @@ function makeHttpRequest(option, url, callback) {
 }
 
 function getPostTime(timestamp) {
-  let time = new Date();
-  let date = new Date(timestamp * 1000);
-  let hours = date.getHours() - time.getHours();
-  let minutes = "0" + (date.getMinutes() - time.getMinutes());
-  return `${hours} hours and ${minutes.substr(-2)} minutes`
+  let time = Date.now();
+  let date = new Date(timestamp);
+  let since = time - date;
+  since = new Date(since);
+  console.log(since);
+  let hour = since.getHours() - 1;
+  let minute = since.getMinutes();
+  return `${hour} hour(s) and ${minute} minute(s)`
 }
 
 //
