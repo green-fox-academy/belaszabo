@@ -6,17 +6,40 @@
   <title>Foxplayer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="public/style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
 </head>
 <body>
   <main>
     <div class="left">
-
+      <img src="public/images/foxplayer.png">
+      <img src="public/images/music-placeholder.png" id="artwork">
+      <div>
+        Playlists
+        <p>All tracks</p>
+        <p>Favorites</p>
+      </div>
     </div>
     <div class="right">
-
+      <div class="current">
+        <p>ezaszammegymost juppi</p>
+        <p>ettolazeloadotol</p>
+        <input type="image" src="public/images/star.svg" id="add-to-favorites">
+        <input type="image" src="public/images/add.svg" id="add-to-playlist">
+      </div>
+      <div class="tracks">
+        <p>1 legjobb szam</p>
+        <p>2 meg jobb</p>
+        <p>3 legeslegeses</p>
+        <p>4 meg egy josag</p>
+      </div>
     </div>
     <div class="control">
-
+      <input type="image" src="public/images/rewind.svg" id="prev">
+      <input type="image" src="public/images/play.svg" id="play">
+      <input type="image" src="public/images/forward.svg" id="next">
+      <input type="range" step="any" id="seekbar">
+      <audio src="public/music/Organoid_-_09_-_Purple_Drift.mp3">
+      </audio>
     </div>
   </main>
   <script src="main.js"></script>
